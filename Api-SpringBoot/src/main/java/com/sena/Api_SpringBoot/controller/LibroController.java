@@ -43,7 +43,7 @@ public class LibroController {
 
     @PostMapping("/libros")
     public Libro create(@RequestBody Libro libro) {
-        return repository.save(libro);:
+        return repository.save(libro);
     }
 
     @PutMapping("/libros/{id}")
