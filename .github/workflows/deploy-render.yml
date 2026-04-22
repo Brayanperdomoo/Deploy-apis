@@ -57,9 +57,15 @@ jobs:
       - name: Run tests
         run: chmod +x mvnw && ./mvnw -B test
 
+  validate_extra:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar pipeline
+        run: echo "Nuevo job funcionando"        
+
   deploy:
     runs-on: ubuntu-latest
-    needs: [validate_node, validate_django, validate_spring]
+    needs: [validate_node, validate_django, validate_spring, validate_extra]
     env:
       RENDER_DEPLOY_HOOK_NODE: ${{ secrets.RENDER_DEPLOY_HOOK_NODE }}
       RENDER_DEPLOY_HOOK_DJANGO: ${{ secrets.RENDER_DEPLOY_HOOK_DJANGO }}
