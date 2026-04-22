@@ -61,11 +61,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Verificar pipeline
-        run: echo "Nuevo job funcionando"        
+        run: echo "Nuevo job funcionando"
+  validate_trabajo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar pipeline
+        run: echo "Nuevo job funcionando"                 
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [validate_node, validate_django, validate_spring, validate_extra]
+    needs: [validate_node, validate_django, validate_spring, validate_extra,validate_trabajo]
     env:
       RENDER_DEPLOY_HOOK_NODE: ${{ secrets.RENDER_DEPLOY_HOOK_NODE }}
       RENDER_DEPLOY_HOOK_DJANGO: ${{ secrets.RENDER_DEPLOY_HOOK_DJANGO }}
